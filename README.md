@@ -1,6 +1,6 @@
 # twitch CLI client
 
-Comtains bad code, I might make it better if there is any interest (contact me leprosy93@gmail.com)
+Contains bad code, I might make it better and document if there is any interest (contact me leprosy93@gmail.com)
 
 Depends on Firefox and Streamlink (can easily be avoided)
 
