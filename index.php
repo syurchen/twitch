@@ -12,8 +12,8 @@ or in the "license" file accompanying this file. This file is distributed on an 
 
 */
 
-require 'twitchLib.php';
-include 'config.php';
+require __DIR__  . '/twitchLib.php';
+include __DIR__ . '/config.php';
 include __DIR__ . '/vendor/autoload.php';
 
 use NewTwitchApi\HelixGuzzleClient;
@@ -30,6 +30,9 @@ $REDIRECT_URI = ***;
 //User to get follows for
 $userName = ***
  */
+
+$cookie = __DIR__ . '/cookies.txt';
+
 
 $chatW = 450;
 $chatH = 700;
@@ -55,8 +58,8 @@ try{
 	curl_setopt($ch, CURLOPT_URL, $authorizationUrl);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookies.txt');
-	curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies.txt');
+	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie);
+	curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
 	$output = curl_exec($ch);
 	curl_close($ch);
 	$output = json_decode($output, true);
