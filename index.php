@@ -63,6 +63,8 @@ try{
 	$output = curl_exec($ch);
 	curl_close($ch);
 	$output = json_decode($output, true);
+	if (empty($output))
+		throw new Exception();
 	$code = $output['code'];
 } catch (Exception $e){
 	print_r($e->getTraceAsString());
