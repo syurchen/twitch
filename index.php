@@ -34,10 +34,6 @@ $userName = ***
 $cookie = __DIR__ . '/cookies.txt';
 
 
-$chatW = 450;
-$chatH = 700;
-$chatX = 1700;
-$chatY = 0;
 
 
 $provider = new TwitchProvider([
@@ -137,13 +133,17 @@ usort($streams, function($a, $b){
 });
 
 $table = new ConsoleTable();
-$table->addHeader('id')->addHeader('User')->addHeader('Title')->addHeader('Uptime');
+$table->addHeader('id')->addHeader('User')->addHeader('Title')->addHeader('Viewers')->addHeader('Uptime');
 foreach ($streams as $id => $stream){
 	$uptime = gmdate("H:i:s", (time() - strtotime($stream['started_at'])));
+	$title = $stream['title'];
+	if (strlen($title) > $titleCut){
+		$title = mb_substr($title, 0, $titleCut) . '...';
+	}
 	$table->addRow()
 		->addColumn($id)
 		->addColumn($stream['user_name'])
-		->addColumn($stream['title'])
+		->addColumn($title)
 		->addColumn($stream['viewer_count'])
 		->addColumn($uptime);
 }
