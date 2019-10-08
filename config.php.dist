@@ -1,0 +1,9 @@
+<?php
+$CLID = '';
+$SECRET = '';
+$REDIRECT_URI = '';
+$userName = '';
+$chatH = 700;
+$chatW = 450;
+$chatX = 1500;
+$chatY = 0;
